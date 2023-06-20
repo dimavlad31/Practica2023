@@ -14,9 +14,10 @@ done
 sudo inotifywait -t 60 -m -r -e create,delete,modify --format '%w%f %e %T' --timefmt '%Y-%m-%d %H:%M:%S' $dirs /bin /etc | while read FILE EVENT TIMESTAMP
 do
 
-	if [[ ! $(echo $FILE | egrep "/.cache/|.local|logActivitati.txt|.goutputstream|.config") ]]
+	if [[ ! $(echo $FILE | egrep "/.cache/|.local|logActivitati.txt|.goutputstream|.config|.bash_history|/.[a-zA-Z0-9]+.swp|subscriptions.conf.[a-zA-Z]|.viminfo.tmp|.viminfo|~$|4913$") ]]
 	then
-		echo $TIMESTAMP $EVENT $FILE >> logActivitati.txt
+		owner=$(sudo stat -c %U $FILE 2> /dev/null)
+		echo $TIMESTAMP $owner  $EVENT $FILE >> logActivitati.txt
 	fi
 done
 
