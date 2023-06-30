@@ -1,0 +1,4 @@
+https://unix.stackexchange.com/questions/340430/dev-input-what-exactly-is-this
+https://www.systutorials.com/docs/linux/man/1-evtest/ - pentru evtest + cautare man evtest
+https://www.youtube.com/watch?v=eWzzsPdaHVs
+https://www.youtube.com/watch?v=MEcL0-3k-2c&t=991s
