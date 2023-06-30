@@ -19,7 +19,7 @@ fi
 
 
 
-interfata=$(sudo ip route | grep default | sed -e 's/^.*dev.//' -e 's/.proto.*//')
+interfata=$(sudo ip route | grep default | sed 's/^.*dev.//' | sed 's/.proto.*//')
 
 sudo tshark -i $interfata -a duration:60 | while read line
 do
