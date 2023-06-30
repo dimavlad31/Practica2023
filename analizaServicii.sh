@@ -1,6 +1,11 @@
 #!/bin/bash
 
 
+if [[ -f logServicii.txt ]] 
+then
+	sudo rm logServicii.txt
+fi
+
 users=$(users)
 
 serviciiActive=$(sudo systemctl list-units -t service --state=active | tail -n +2 | head -n -5 | cut -d' ' -f3 | tr "\n" " ")

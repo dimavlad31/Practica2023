@@ -1,5 +1,24 @@
 #!/bin/bash
 
+
+if [[ -f logAdreseIP.txt ]]
+then
+	sudo rm logAdreseIP.txt
+fi
+
+if [[ -f logDNS.txt ]]
+then
+        sudo rm logDNS.txt
+fi
+
+if [[ -f logTrafic.txt ]]
+then
+        sudo rm logTrafic.txt
+fi
+
+
+
+
 interfata=$(sudo ip route | grep default | sed -e 's/^.*dev.//' -e 's/.proto.*//')
 
 sudo tshark -i $interfata -a duration:60 | while read line

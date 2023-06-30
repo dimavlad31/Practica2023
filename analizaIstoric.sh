@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [[ -f istoricComenzi.txt ]]
+then
+	sudo rm istoricComenzi.txt
+fi
+	
 
 users=$(users)
 

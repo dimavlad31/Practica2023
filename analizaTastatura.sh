@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [[ -f logTaste.txt ]]
+then
+	sudo rm logTaste.txt
+fi
+	
 if [ "$(id -u)" != "0" ]
 then
     echo "Acest script trebuie sa fie executat cu privilegii de root."

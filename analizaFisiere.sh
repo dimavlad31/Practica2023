@@ -1,6 +1,11 @@
 #!/bin/bash
 
 
+if [[ -f logActivitati.txt ]]
+then
+	sudo rm logActivitati.txt
+fi
+
 users=$(users)
 
 dirs=""
